@@ -26,6 +26,51 @@
   width: 100%;
 }
 
+.formConatainer {
+  /* border: 1px solid #333; */
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 10px;
+}
+
+.tituloNome {
+  font-size: 20px;
+  color: #333;
+}
+
+.nameInput {
+  padding: 5px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  font-size: 20px;
+  color: black;
+  background-color: #BFACC8;
+}
+
+
+.tituloPresentesSelecionados {
+  font-size: 20px;
+  color: black;
+  margin: 30px 50px;
+}
+
+.btnEnviarContainer {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btnEnviar {
+  background-color: #4a4063;
+  border-radius: 10px;
+  height: 50px;
+  width: 100px;
+  margin: auto;
+}
+
 .presentContainer {
   grid-area: presentContainer;
   color: black;
@@ -46,7 +91,7 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 5px rgba(191, 172, 200, 0.5);
 }
 
 .btnPresente {

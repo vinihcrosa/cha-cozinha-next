@@ -20,6 +20,9 @@ export default function Home({data}: { data: Presente[]}) {
   const [presentes, setPresentes] = useState<Presente[]>(data)
   const [presentesSelecionado, setPresentesSelecionado] = useState<string[]>([])
   const [totalPresentes, setTotalPresentes] = useState<number>(0)
+  const [nome, setNome] = useState<string>('');
+  const [qtdPessoas, setQtdPessoas] = useState<number>(0);
+
   console.log('renderizou')
   
   function handleSelecionaPresente(id: string) {
@@ -56,25 +59,51 @@ export default function Home({data}: { data: Presente[]}) {
       </div>
 
       <div className={styles.nameContainer}>
-        <span>Coloque o seu nome aqui</span>
-        <input type="text" placeholder="Nome" />
+        <div className={styles.formConatainer}>
+          <span className={styles.tituloNome}>Coloque o seu nome aqui</span>
+          <input 
+            type="text" 
+            placeholder="Nome" 
+            onChange={(e) => setNome(e.target.value)}
+            value={nome}
+            className={styles.nameInput}
+          />
+        </div>
+        <div className={styles.formConatainer}>
+          <span className={styles.tituloNome}>Quantas pessoas vem com voce?</span>
+          <input 
+            type="number" 
+            placeholder="Nome" 
+            onChange={(e) => setQtdPessoas(+e.target.value)}
+            value={qtdPessoas}
+            className={styles.nameInput}
+          />
+        </div>
+        <h3 className={styles.tituloPresentesSelecionados}>Presentes Selecionados</h3>
+        <div className={styles.presentContainer}> 
         {
-            presentes.map((presente) => {
-              if(!presentesSelecionado.includes(presente._id)) return null
-              return (
-                <div key={presente._id} className={styles.presente}>
-                  <div className={styles.presenteName}>{presente.presente}</div>
-                  <button 
-                    key={presente._id} 
-                    onClick={() => {
-                    handleSelecionaPresente(presente._id)
-                    }}
-                    className={ styles.btnPresente }
-                  >Retirar</button>
-                </div>
-              )
-            })
-          }
+          presentes.map((presente) => {
+            if(!presentesSelecionado.includes(presente._id)) return null
+            return (
+              <div key={presente._id} className={styles.presente}>
+                <div className={styles.presenteName}>{presente.presente}</div>
+                <button 
+                  key={presente._id} 
+                  onClick={() => {
+                  handleSelecionaPresente(presente._id)
+                  }}
+                  className={ styles.btnPresente }
+                >
+                  Retirar
+                </button>
+              </div>
+            )
+          })
+        }
+        </div>
+        <div className={styles.btnEnviarContainer}>
+          <button className={styles.btnEnviar}>Enviar</button>
+        </div>
       </div>
 
       <div className={styles.presentContainer}>
